@@ -1,0 +1,49 @@
+<form [formGroup]="userForm" (ngSubmit)="onSubmit($event)">
+    <label>Username:</label><br>
+    <input type="text" formControlName="username"><br>
+    <p *ngIf="userForm.controls.username?.dirty && userForm.controls.username.errors?.required">Campo obbligatorio</p>
+    <p *ngIf="userForm.controls.username.errors?.stringsMustBeAvailable">Lo username è già presente</p>
+   
+    <label>Password:</label><br>
+    <input type="text" formControlName="password">
+    <br>
+    <p *ngIf="userForm.controls.password?.dirty && userForm.controls.password.errors?.required">Campo obbligatorio</p>
+    <label>Conferma password:</label><br>
+    <input type="text" formControlName="password2"><br>
+
+    <label>
+        <input type="radio" formControlName="genere" value="Maschio">
+        Maschio
+    </label><br>
+    <label>
+        <input type="radio" formControlName="genere" value="Femmina">
+        Femmina
+    </label><br>
+    
+    <label>Email:</label><br>
+    <input type="text" formControlName="email"><br>
+    <p *ngIf="userForm.controls.email?.dirty && userForm.controls.email.errors?.required">Campo obbligatorio</p>
+    <p *ngIf="userForm.controls.email.errors?.pattern && userForm.controls.email?.touched">Email non valida</p>
+
+    <label>Codice fiscale:</label><br>
+    <input type="text" formControlName="cf"><br>
+    <p *ngIf="userForm.controls.cf?.dirty && userForm.controls.cf.errors?.required">Campo obbligatorio</p>
+    <p *ngIf="userForm.controls.cf.errors?.pattern && userForm.controls.cf?.touched">Codice fiscale non valido</p>
+
+    <label>Data nascita:</label><br>
+    <input type="date" formControlName="dataNascita"><br>
+    <p *ngIf="userForm.controls.dataNascita?.dirty && userForm.controls.dataNascita.errors?.required">Campo obbligatorio</p>
+    <p *ngIf="userForm.controls.dataNascita.errors?.controllaData">Data nascita non valida</p>
+
+    <label>Ruolo</label>
+    <select formControlName="ruolo">
+      <option [ngValue]="0" > -- </option>
+      <option [ngValue]="ruolo" *ngFor="let ruolo of ruoli">{{ruolo}}</option>
+    </select>
+    <p *ngIf="userForm.controls.ruolo?.dirty && userForm.controls.ruolo.errors?.notUndefined">Campo obbligatorio</p>
+
+    <br><br><button type="submit" [disabled]="userForm.invalid">Salva</button>
+    <br>
+    <p *ngIf="userForm.controls.password?.dirty && userForm.controls.password2?.touched && userForm.errors?.controllaPassword">Le password devono essere uguali</p>
+  </form>
+  
