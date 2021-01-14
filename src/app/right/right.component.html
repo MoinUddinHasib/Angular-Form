@@ -1,0 +1,27 @@
+<link href="right.component.css" rel="stylesheet" type="text/css">
+<div id="tabella">
+<table> 
+    <thead>
+        <tr>
+            <th>Username</th>
+            <th>Password</th>
+            <th>Genere</th>
+            <th>Email</th>
+            <th>Codice fiscale</th>
+            <th>Data nascita</th>
+            <th>Ruolo</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let u of utenti">
+            <td>{{u.username}}</td>
+            <td>{{u.password}}</td>
+            <td>{{u.genere}}</td>
+            <td>{{u.email}}</td>
+            <td>{{u.cf}}</td>
+            <td>{{u.dataNascita | date:'dd/MM/yyyy'}}</td>
+            <td>{{u.ruolo}}</td>
+        <tr>
+    </tbody>
+</table>
+</div>

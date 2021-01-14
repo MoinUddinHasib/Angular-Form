@@ -61,7 +61,9 @@ export class LeftComponent implements OnInit {
   }
 
   onSubmit(input: any) {
-    console.log(this.userForm.value);
+    console.log("Utente inserito")
+    this.userService.insertUser(this.userForm.value)
+    this.userForm.reset()
   }
 
 }

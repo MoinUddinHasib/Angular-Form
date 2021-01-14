@@ -40,10 +40,9 @@
       <option [ngValue]="0" > -- </option>
       <option [ngValue]="ruolo" *ngFor="let ruolo of ruoli">{{ruolo}}</option>
     </select>
-    <p *ngIf="userForm.controls.ruolo?.dirty && userForm.controls.ruolo.errors?.notUndefined">Campo obbligatorio</p>
+    <p *ngIf="(userForm.controls.ruolo?.dirty || userForm.controls.ruolo?.touched)&& userForm.controls.ruolo.errors?.notUndefined">Campo obbligatorio</p>
 
     <br><br><button type="submit" [disabled]="userForm.invalid">Salva</button>
     <br>
     <p *ngIf="userForm.controls.password?.dirty && userForm.controls.password2?.touched && userForm.errors?.controllaPassword">Le password devono essere uguali</p>
   </form>
-  

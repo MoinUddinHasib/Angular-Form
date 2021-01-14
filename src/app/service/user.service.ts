@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
@@ -7,7 +8,9 @@ export class UserService {
 
   usernames: string[] = ["Pippo","Pluto","Paperino"]
 
-  ruoli = ['benzina', 'diesel', 'gpl']
+  utenti: any[] = []
+
+  ruoli = ['GUEST', 'ADMIN', 'USER']
 
   constructor() { }
 
@@ -19,7 +22,12 @@ export class UserService {
     return this.usernames
   }
 
-  public insertUsername(username: string) {
-    this.usernames.push(username)
+  public getUtenti() {
+    return this.utenti
+  }
+
+  public insertUser(form: any) {
+    this.usernames.push(form.username)
+    this.utenti.push(form)
   }
 }
